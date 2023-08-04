@@ -1,17 +1,24 @@
 package raindragonn.core.order;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import raindragonn.core.AppConfig;
 import raindragonn.core.member.Grade;
 import raindragonn.core.member.Member;
 import raindragonn.core.member.MemberService;
-import raindragonn.core.member.MemberServiceImpl;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
 
+    @BeforeEach
+    void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     void createOrder() {

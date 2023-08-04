@@ -3,15 +3,15 @@ package raindragonn.core;
 import raindragonn.core.member.Grade;
 import raindragonn.core.member.Member;
 import raindragonn.core.member.MemberService;
-import raindragonn.core.member.MemberServiceImpl;
 import raindragonn.core.order.Order;
 import raindragonn.core.order.OrderService;
-import raindragonn.core.order.OrderServiceImpl;
 
 public class OrderApp {
+
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
