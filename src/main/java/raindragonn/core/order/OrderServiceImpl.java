@@ -1,15 +1,18 @@
 package raindragonn.core.order;
 
 import raindragonn.core.discount.DiscountPolicy;
-import raindragonn.core.discount.FixDiscountPolicy;
 import raindragonn.core.member.Member;
 import raindragonn.core.member.MemberRepository;
-import raindragonn.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
