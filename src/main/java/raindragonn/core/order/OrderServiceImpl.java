@@ -2,6 +2,7 @@ package raindragonn.core.order;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import raindragonn.core.annotation.MainDiscountPolicy;
 import raindragonn.core.discount.DiscountPolicy;
 import raindragonn.core.member.Member;
 import raindragonn.core.member.MemberRepository;
@@ -11,6 +12,8 @@ import raindragonn.core.member.MemberRepository;
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
+
+    @MainDiscountPolicy
     private final DiscountPolicy discountPolicy;
 
     @Override
