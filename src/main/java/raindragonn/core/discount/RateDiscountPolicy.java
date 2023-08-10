@@ -1,10 +1,12 @@
 package raindragonn.core.discount;
 
 import org.springframework.stereotype.Component;
+import raindragonn.core.annotation.MainDiscountPolicy;
 import raindragonn.core.member.Grade;
 import raindragonn.core.member.Member;
 
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
