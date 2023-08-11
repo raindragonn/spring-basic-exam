@@ -2,6 +2,7 @@ package raindragonn.core.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.junit.jupiter.api.Test;
@@ -47,10 +48,10 @@ public class SingletonWithPrototypeTest1 {
     @RequiredArgsConstructor
     static class ClientBean {
 
-        private final ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private final Provider<PrototypeBean> prototypeBeanProvider;
 
         public int logic() {
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = prototypeBeanProvider.get();
 
             prototypeBean.addCount();
             return prototypeBean.getCount();
