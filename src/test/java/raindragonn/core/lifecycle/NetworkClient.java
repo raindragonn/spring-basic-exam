@@ -1,5 +1,8 @@
 package raindragonn.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 public class NetworkClient {
 
     private String url;
@@ -28,6 +31,7 @@ public class NetworkClient {
 
 
     // 의존관계 주입이 끝날때 동작
+    @PostConstruct
     public void init() {
         System.out.println("NetworkClient.init");
         connect();
@@ -36,6 +40,7 @@ public class NetworkClient {
 
 
     // 빈 생명주기가 종료될 때 동작
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disConnect();
